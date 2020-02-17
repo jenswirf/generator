@@ -1,6 +1,6 @@
 ## Packman Pouch Pattern Generator
 
-Shiny application to generate pattern for MYOG bags/pouches. Covers rectangular and trapezoidal prisms and truncated pyramid shapes. 
+Shiny application to generate pattern for MYOG bags/pouches. Covers rectangular and trapezoidal prisms as weell as truncated pyramid shapes. 
 
 ![](prism.png)
 
