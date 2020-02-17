@@ -7,7 +7,7 @@ source("utils.R")
 ui <- fluidPage(div(style   = "margin: 10px 20px;",
     includeCSS("www/style.css"),
 
-    div(style = "padding: 0 20px", class = "wrapper",
+    div(class = "wrapper",
     div(
         div(style = "width: 300px; display: inline-block;  vertical-align: top;", class = "logo",
                img(src = "logo.jpg", style = "height: 115px; margin-left: 10px;"),
@@ -56,7 +56,7 @@ ui <- fluidPage(div(style   = "margin: 10px 20px;",
             actionButton("instructions", icon = icon("list-ol"), "Instructions"),
             br(),
             br(),
-            div(tags$a(icon("github"), "View source on github", href = "https://github.com/jenswirf/generator", style = "color: #999;"))
+            div(tags$a(icon("github"), "View source on github", href = "https://github.com/jenswirf/generator", target="_blank", style = "color: #999;"))
         ),
 
         div(style = "display: inline-block;", class = "pattern",
