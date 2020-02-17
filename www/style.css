@@ -68,3 +68,30 @@ a:visited {
 a:hover {
   text-decoration: none;
 }
+
+.inputs {
+   margin-right: 100px;
+}
+
+
+.pattern {
+  width: 600px; 
+}
+
+@media only screen and (max-width: 830px) {
+.logo {
+  text-align: center;
+}
+.wrapper {
+  text-align: center;
+}
+.inputs {
+  text-align: center;
+  margin-right: 0px;
+}
+.pattern {
+  text-align: center;
+    width: 400px; 
+}
+}
+

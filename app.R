@@ -7,13 +7,13 @@ source("utils.R")
 ui <- fluidPage(div(style   = "margin: 10px 20px;",
     includeCSS("www/style.css"),
 
-    div(style = "padding: 0 20px",
+    div(style = "padding: 0 20px", class = "wrapper",
     div(
-        div(style = "width: 200px; display: inline-block;  vertical-align: top;",
+        div(style = "width: 300px; display: inline-block;  vertical-align: top;", class = "logo",
                img(src = "logo.jpg", style = "height: 115px; margin-left: 10px;"),
                h1("PACKMAN", style = "font-size: 24px;")
               ),
-        div(style = "width: 300px; display: inline-block; vertical-align: top;",
+        div(style = "width: 300px; display: inline-block; vertical-align: top;", class = "inputs",
            h3("Pattern Generator"),
            p("Disclaimer: Your milage may vary, use at own risk. Always double check pattern calculations."),
         br(),
@@ -53,31 +53,19 @@ ui <- fluidPage(div(style   = "margin: 10px 20px;",
             div(numericInput("s", "Seam allowance:",value = 1, min = .5, max = 2.5, step = .1, width = "120px"), style = "display: inline-block;"),
             br(),
             downloadButton("png", label = "Save to PNG", width = "100%"),
+            actionButton("instructions", icon = icon("list-ol"), "Instructions"),
             br(),
             br(),
             div(tags$a(icon("github"), "View source on github", href = "https://github.com/jenswirf/generator", style = "color: #999;"))
         ),
 
-        div(style = "width: 800px; display: inline-block; vertical-align: top;",
-           plotOutput("pattern", width = "800px", height = "800px")  %>% withSpinner(color="#cccccc", type = 7)),
-       div(style = "width: 500px; display: inline-block; vertical-align: top;",
-           br(),
-           h4("Instructions"),
-           
-           tags$ol(
-               tags$li("Copy measurements to paper and cut it out. (Printing to scale can be tricky!)"),
-               tags$li("Lay out your fabric and mark a cross."),
-               tags$li("Mark the the pattern in each of the four quadrants, starting the the top right corder and then flipping it horizontally and vertically as you go around."),
-               tags$li("Cut it out"),
-               tags$li("Split your zipper and sew right-side to right-side on the very top and bottom of the pattern."),
-               tags$li("Top stich that zipper to make it look like pro."),
-               tags$li("(Bonus) Add some flavor: zipper tabs, mesh pockets, handles, labels etc. while the project is still flat"),
-               tags$li("Install zipper slider and turn the pouch inside out"),
-               tags$li("Turn the fabric so that the now closed zipper is centered on top and wrangle it so you can sew the sides together, then bind the edges."),
-               tags$li("Make sure your zipper is somewhat open at this point, so you can turn it in the end."),
-               tags$li("One by one, line up each of the four boxed corners together and sew them shut and the finally bind the edges."),
-               tags$li("Turn pouch right side out. Done")
-           ))
+        div(style = "display: inline-block;", class = "pattern",
+            div(br(),br(),br(),br(),br(),br(),br(),
+                plotOutput("pattern", width = "100%", height = "600px")  %>% withSpinner(color="#cccccc", type = 7))
+                
+          
+            )
+
     
 ))
 ))
@@ -124,6 +112,26 @@ server <- function(input, output) {
             ggsave(filename = file, plot = pattern()$plot, device = png(), units = "cm", height = pattern()$A, width = max(pattern()$B, pattern()$E))
         }
     )
+    
+    observeEvent(input$instructions, {
+        showModal(modalDialog(
+            title = "Instructions",
+            tags$ol(
+                tags$li("Copy measurements to paper and cut it out. (Printing to scale can be tricky!)"),
+                tags$li("Lay out your fabric and mark a cross."),
+                tags$li("Mark the the pattern in each of the four quadrants, starting the the top right corder and then flipping it horizontally and vertically as you go around."),
+                tags$li("Cut it out"),
+                tags$li("Split your zipper and sew right-side to right-side on the very top and bottom of the pattern."),
+                tags$li("Top stich that zipper to make it look like pro."),
+                tags$li("(Bonus) Add some flavor: zipper tabs, mesh pockets, handles, labels etc. while the project is still flat"),
+                tags$li("Install zipper slider and turn the pouch inside out"),
+                tags$li("Turn the fabric so that the now closed zipper is centered on top and wrangle it so you can sew the sides together, then bind the edges."),
+                tags$li("Make sure your zipper is somewhat open at this point, so you can turn it in the end."),
+                tags$li("One by one, line up each of the four boxed corners together and sew them shut and the finally bind the edges."),
+                tags$li("Turn pouch right side out. Done")
+            )
+        ))
+    })
     
 }
 
