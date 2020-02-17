@@ -10,11 +10,12 @@ ui <- fluidPage(div(style   = "margin: 10px 20px;",
     div(style = "padding: 0 20px",
     div(
         div(style = "width: 200px; display: inline-block;  vertical-align: top;",
-               img(src = "logo.jpg"),
-               h1("PACKMAN")
+               img(src = "logo.jpg", style = "height: 115px; margin-left: 10px;"),
+               h1("PACKMAN", style = "font-size: 24px;")
               ),
         div(style = "width: 300px; display: inline-block; vertical-align: top;",
-           h3("Pouch Pattern Generator"),
+           h3("Pattern Generator"),
+           p("Disclaimer: Your milage may vary, use at own risk. Always double check pattern calculations."),
         br(),
             textInput("name", "Name of pattern", value = "Layout #001"),
             sliderInput("h",
@@ -54,7 +55,7 @@ ui <- fluidPage(div(style   = "margin: 10px 20px;",
             downloadButton("png", label = "Save to PNG", width = "100%"),
             br(),
             br(),
-            div(tags$a(icon("github"), "View source on github", href = "http://www.github.com", style = "color: #999;"))
+            div(tags$a(icon("github"), "View source on github", href = "https://github.com/jenswirf/generator", style = "color: #999;"))
         ),
 
         div(style = "width: 800px; display: inline-block; vertical-align: top;",
@@ -62,19 +63,18 @@ ui <- fluidPage(div(style   = "margin: 10px 20px;",
        div(style = "width: 500px; display: inline-block; vertical-align: top;",
            br(),
            h4("Instructions"),
+           
            tags$ol(
-               tags$li("Print (can be tricky to print to scale) or copy pattern measurements to paper and cut it out."),
+               tags$li("Copy measurements to paper and cut it out. (Printing to scale can be tricky!)"),
                tags$li("Lay out your fabric and mark a cross."),
-               tags$li("Chalk the the pattern in each of the four quadrants, starting the the top right corder and then flipping it horizontally and vertically as you go around."),
+               tags$li("Mark the the pattern in each of the four quadrants, starting the the top right corder and then flipping it horizontally and vertically as you go around."),
                tags$li("Cut it out"),
-               tags$li("(Bonus) Iron press the top and bottom creases, will look a little neater in the end."),
                tags$li("Split your zipper and sew right-side to right-side on the very top and bottom of the pattern."),
-               tags$li("Top stich that zipper to make it look like pro"),
+               tags$li("Top stich that zipper to make it look like pro."),
+               tags$li("(Bonus) Add some flavor: zipper tabs, mesh pockets, handles, labels etc. while the project is still flat"),
                tags$li("Install zipper slider and turn the pouch inside out"),
-               tags$li("(Bonus) Add some flavor: zipper tabs, mesh pockets, handles, labels etc. while fabric is still flat"),
-               tags$li("Turn the fabric so that the now closed zipper is centered on top and wrangle it so you can sew both of the sides together, then bind the edges."),
-               tags$li("(Bonus) At this point you may or may be able to do a top-stitch to the seam you just did, depends on the shape of the pouch and how nimble your sewing machine is."),
-               tags$li("Make sure your zipper is somewhat open at this point"),
+               tags$li("Turn the fabric so that the now closed zipper is centered on top and wrangle it so you can sew the sides together, then bind the edges."),
+               tags$li("Make sure your zipper is somewhat open at this point, so you can turn it in the end."),
                tags$li("One by one, line up each of the four boxed corners together and sew them shut and the finally bind the edges."),
                tags$li("Turn pouch right side out. Done")
            ))
