@@ -16,7 +16,7 @@ ui <- fluidPage(div(style   = "margin: 10px 20px;",
               ),
         div(style = "width: 300px; vertical-align: top;", class = "inputs",
            h3("Pattern Generator"),
-           p("Disclaimer: Your mileage may vary, use at your own risk. Always double check pattern calculations."),
+        p("Make a pattern for a boxed corner zippered pouch to your exact specification."),
         br(),
             textInput("name", "Name of pattern", value = "Layout #001"),
             sliderInput("h",
@@ -53,17 +53,19 @@ ui <- fluidPage(div(style   = "margin: 10px 20px;",
             div(numericInput("z","Zipper width:",value = 3, min = 1, max = 6, step = .1, width = "100px"), style = "display: inline-block;"),
             div(numericInput("s", "Seam allowance:",value = 1, min = .5, max = 2.5, step = .1, width = "120px"), style = "display: inline-block;"),
             br(),
-            downloadButton("png", label = "Save to PNG", width = "100%"),
+            downloadButton("png", label = "Save as PNG", width = "100%"),
             actionButton("instructions", icon = icon("list-ol"), "Instructions"),
             br(),
+        br(),
+        p("Disclaimer: Your mileage may vary, use at your own risk. Always double check pattern calculations.", style = "color: #777777;"),
             br(),
             div(tags$a(icon("github"), "View source on github", href = "https://github.com/jenswirf/generator", target="_blank", style = "color: #999;"))
         ),
 
         div(style = "display: inline-block;", class = "pattern",
             div(
-                tags$i("Preview (not to scale)", style = "margin-left: 20px; color: #777777;"),
-                plotOutput("pattern", width = "100%", height = "600px")  %>% withSpinner(color="#cccccc", type = 7))
+                tags$i("Pattern Preview (not to scale)", style = "margin-left: 20px; color: #777777; font-size: 15px;"),
+                plotOutput("pattern", width = "100%", height = "500px")  %>% withSpinner(color="#cccccc", type = 7))
                 
           
             )

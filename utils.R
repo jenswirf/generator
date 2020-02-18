@@ -94,6 +94,9 @@ plot_pattern <- function(p, name) {
   o_y <- p$beta_y + (p$h / 2) + 2
   o_x <- mean(p$alpha_x, p$beta_x) / 2
   
+  nudge_x <- .25
+  nudge_y <- .45
+  
   ggplot() +
     geom_line(aes(x = c(0, 0), y = c(0,p$A))) +
     geom_line(aes(x = c(0, p$B - p$s), y = c(p$A, p$A))) +
@@ -109,15 +112,15 @@ plot_pattern <- function(p, name) {
     geom_rect(aes(xmin = p$E - p$s, xmax = p$E, ymin = 0, ymax = p$D), linetype = "dotted", color = "black", alpha = 0) +
     geom_point(aes(x = c(p$alpha_x, p$beta_x), y = c(p$alpha_y, p$beta_y)), size = 4) +
     geom_point(aes(x = c(p$alpha_x, p$beta_x), y = c(p$alpha_y, p$beta_y)), size = 1, color = "white") +
-    annotate("text", x = .25, y = p$A / 2, label = p$A, hjust = 0) +
-    annotate("text", x = p$B / 2, y = p$A - .35, label = p$B, hjust = .5) +
-    annotate("text", x = p$B - .25, y = p$A - (p$C / 2), label = p$C, hjust = 1) +
-    annotate("text", x = p$alpha_x - .25, y = p$alpha_y + ((p$A - p$alpha_y) / 2), label = p$A - p$alpha_y, hjust = 1) +
-    annotate("text", x = p$alpha_x  / 2, y = p$alpha_y + .35, label = p$alpha_x, hjust = .5) +
-    annotate("text", x = p$E - .25, y = p$D / 2, label = p$D, hjust = 1) +
-    annotate("text", x = p$E / 2, y = 0 + .35, label = p$E, hjust = .5) +
-    annotate("text", x = p$beta_x / 2, y = p$beta_y + .35, label = p$beta_x, hjust = .5) +
-    annotate("text", x = p$beta_x - .25, y = p$beta_y / 2, label = p$beta_y, hjust = 1) +
+    annotate("text", x = nudge_x, y = p$A / 2, label = p$A, hjust = 0) +
+    annotate("text", x = p$B / 2, y = p$A - nudge_y, label = p$B, hjust = .5) +
+    annotate("text", x = p$B - nudge_x, y = p$A - (p$C / 2), label = p$C, hjust = 1) +
+    annotate("text", x = p$alpha_x - nudge_x, y = p$alpha_y + ((p$A - p$alpha_y) / 2), label = p$A - p$alpha_y, hjust = 1) +
+    annotate("text", x = p$alpha_x  / 2, y = p$alpha_y + nudge_y, label = p$alpha_x, hjust = .5) +
+    annotate("text", x = p$E - nudge_x, y = p$D / 2, label = p$D, hjust = 1) +
+    annotate("text", x = p$E / 2, y = 0 + nudge_y, label = p$E, hjust = .5) +
+    annotate("text", x = p$beta_x / 2, y = p$beta_y + nudge_y, label = p$beta_x, hjust = .5) +
+    annotate("text", x = p$beta_x - nudge_x, y = p$beta_y / 2, label = p$beta_y, hjust = 1) +
     annotate("text", x = p$beta_x / 2, y = o_y - 1, label = glue("bold('{name}')"), hjust = .5, parse = T, size = 6) +
     annotate("text", x = p$beta_x / 2, y = o_y - 1.8, label = glue("H:{p$h} W:{p$w1}/{p$w2} L:{p$l1}/{p$l2}"), hjust = .5) +
     annotate("text", x = p$beta_x / 2, y = o_y - 2.6, label = glue("R:{p$x}% S:{p$s}"), hjust = .5) +
