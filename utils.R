@@ -37,7 +37,6 @@ s = .8
 # s  : seam allowance
 make_pattern <- function(h, w1, w2, l1, l2, z, x, s, accuracy = .1) {
 
-  
   # internal trigonometry (see figure for reference)
   d <- abs(l1 - l2) / 2
   t <- pythagoras(a = d, b = h)

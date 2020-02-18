@@ -71,20 +71,24 @@ a:hover {
 
 .inputs {
    margin-right: 100px;
+   display: inline-block;
 }
 
 
 .pattern {
   width: 600px; 
+  margin-top: 100px;
 }
 
 .logo {
   text-align: center;
+  display: inline-block;
 }
 
-@media only screen and (max-width: 830px) {
+@media only screen and (max-width: 1000px) {
 .logo {
   text-align: center;
+   display: block;
 }
 .wrapper {
   text-align: center;
@@ -92,10 +96,22 @@ a:hover {
 .inputs {
   text-align: center;
   margin-right: 0px;
+   display: block;
 }
 .pattern {
   text-align: center;
     width: 400px; 
+      margin-top: 30px;
 }
+
+body {
+  text-align: center;
+ 
+}
+.wrapper {
+   margin: 0 auto;
+   width: 300px;
+}
+
 }
 
