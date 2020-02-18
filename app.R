@@ -6,16 +6,17 @@ source("utils.R")
 
 ui <- fluidPage(div(style   = "margin: 10px 20px;",
     includeCSS("www/style.css"),
+    includeScript("www/ga.js"),
 
     div(class = "wrapper",
     div(
-        div(style = "width: 300px; display: inline-block;  vertical-align: top;", class = "logo",
+        div(style = "width: 300px; vertical-align: top;", class = "logo",
                img(src = "logo.jpg", style = "height: 115px; margin-left: 10px;"),
                h1("PACKMAN", style = "font-size: 24px;")
               ),
-        div(style = "width: 300px; display: inline-block; vertical-align: top;", class = "inputs",
+        div(style = "width: 300px; vertical-align: top;", class = "inputs",
            h3("Pattern Generator"),
-           p("Disclaimer: Your milage may vary, use at own risk. Always double check pattern calculations."),
+           p("Disclaimer: Your mileage may vary, use at own risk. Always double check pattern calculations."),
         br(),
             textInput("name", "Name of pattern", value = "Layout #001"),
             sliderInput("h",
@@ -60,7 +61,8 @@ ui <- fluidPage(div(style   = "margin: 10px 20px;",
         ),
 
         div(style = "display: inline-block;", class = "pattern",
-            div(br(),br(),br(),br(),br(),br(),br(),
+            div(
+                tags$i("Preview (not to scale)", style = "margin-left: 20px; color: #777777;"),
                 plotOutput("pattern", width = "100%", height = "600px")  %>% withSpinner(color="#cccccc", type = 7))
                 
           
