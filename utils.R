@@ -17,15 +17,6 @@ pythagoras <- function(a, b, c) {
   out
 }
 
-h = 8
-w1 = 6  
-w2 = 10
-l1 = 22
-l2 = 24
-z =  3.1
-x = .25
-s = .8
-
 
 # h  : height
 # w1 : width at top

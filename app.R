@@ -63,6 +63,10 @@ ui <- fluidPage(div(style   = "margin: 10px 20px;",
         ),
 
         div(style = "display: inline-block;", class = "pattern",
+            tags$i("Dimensions (static reference)", style = "margin-left: 20px; color: #777777; font-size: 15px;"),
+            br(),
+            img(src = "figure.png", height = "200px", style = "margin; 0 auto;"),
+            br(), br(),
             div(
                 tags$i("Pattern Preview (not to scale)", style = "margin-left: 20px; color: #777777; font-size: 15px;"),
                 plotOutput("pattern", width = "100%", height = "500px")  %>% withSpinner(color="#cccccc", type = 7))
